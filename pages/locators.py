@@ -12,6 +12,7 @@ class BasePageLocators:
         By.CSS_SELECTOR,
         'a:contains("View basket_1")'
     )
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 # class MainPageLocators(object):
@@ -21,6 +22,13 @@ class BasePageLocators:
 class LoginPageLocators(object):
     LOGIN_FORM = (By.CSS_SELECTOR, '#login_form')
     REGISTER_FORM = (By.CSS_SELECTOR, '#register_form')
+    EMAIL_FIELD = (By.CSS_SELECTOR, '#id_registration-email')
+    PASSWORD_FIELD = (By.CSS_SELECTOR, '#id_registration-password1')
+    REPEAT_PASSWORD_FIELD = (
+        By.CSS_SELECTOR,
+        '#id_registration-password2'
+    )
+    REGISTER_BUTTON = (By.CSS_SELECTOR, '#register_form>button')
 
 
 class ProductPageLocators(object):
