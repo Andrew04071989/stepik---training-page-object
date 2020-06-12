@@ -2,8 +2,10 @@ import math
 import pytest
 import time
 
-from .pages.product_page import ProductPage
 from selenium.common.exceptions import NoAlertPresentException
+
+from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 
 
 # link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
@@ -93,6 +95,17 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.open()
     page.should_be_login_link()
     page.go_to_login_page()
+
+
+def test_guest_cant_see_product_in_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_basket_button()
+    page.go_to_basket_page()
+    basket_page = BasketPage(page.browser, page.browser.current_url)
+    basket_page.should_not_be_products_in_basket()
+    basket_page.should_be_message_about_empty_basket()
 
 
 
